@@ -3,7 +3,180 @@ Theme Name: SAE301
 Theme URI: https://sae301.yermakov.fr
 Author: Yaroslav Yermakov
 Author URI: https://yermakov.fr
-Description: Le thème de SAE301
+Description: Theme de le site de SAE 301
 Version: 0.1
-Tags:
+Tags: 
 */
+
+:root {
+/* Color styles */
+    --impossible--red: rgba(255, 70, 85, 1);
+    --mariana--trench: rgba(15, 25, 35, 1);
+    --desert--storm: rgba(236, 232, 224, 1);
+    --system-green: rgba(111, 225, 175, 1);
+    --system--red: rgba(255, 40, 58, 1);
+}
+
+@font-face {
+    font-family: 'Tungsteen';
+    src: url('/sae301/wp-content/themes/sae301/fonts/tungsten_bold.woff');
+}
+@font-face {
+    font-family: 'Din';
+    src: url('/sae301/wp-content/themes/sae301/fonts/dinnextw1g.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Din';
+    src: url('/sae301/wp-content/themes/sae301/fonts/dinnextw1g_bold.otf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Din';
+    src: url('/sae301/wp-content/themes/sae301/fonts/dinnextw1g_italic.otf');
+    font-style: italic;
+    font-weight: normal;
+}
+
+body{
+    margin: 0px;
+    background-color: var(--mariana--trench);
+}
+
+h1{
+    font-family: Tungsteen;
+    font-size: 64px;
+    margin: 0px;
+}
+
+h2{
+    font-family: Din;
+    font-size: 32px;
+    margin: 0px;
+}
+
+p, a, h2, h3, h4, h5, h6{
+    font-family: Din;
+    margin: 0px;
+}
+
+p{
+    font-size: 16px;
+}
+
+.hero {
+    position: relative;
+    display: flex;
+    flex: 1 1 100%;
+    overflow: hidden;
+    background-color: var(--impossible--red);
+    /* Base color */
+}
+.hero_home {
+    height: 100vh;
+    /* Set to 100vh to fill viewport height or adjust as needed */
+}
+
+.hero img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Keeps the image proportionate */
+    filter: grayscale(100%);
+    mix-blend-mode: multiply;
+    z-index: 1;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--mariana--trench);
+    /* Dark color overlay */
+    mix-blend-mode: lighten;
+    z-index: 2;
+}
+
+.hero_wrap {
+    position: relative;
+    z-index: 3;
+    color: white;
+    padding: 10px 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hero_top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.tagline{
+    color: var(--Desert-Storm);
+        font-size: 20px;
+        font-weight: bold;
+    width: 75%;
+}
+
+.hero_home_bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 50px;
+}
+
+.hero_home_bottom p{
+    text-align: center;
+}
+
+.home p, .home h2{
+    color: var(--desert--storm);
+}
+
+.home_texts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 20px 30px;
+}
+
+.home_events{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 30px;
+    padding: 20px 30px;
+}
+
+.button{
+    background-color: var(--impossible--red);
+    color: var(--mariana--trench);
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    padding: 15px;
+    border: 1px solid var(--Mariana-Trench);
+    display: block;
+}
+
+.home_matchs{
+    width: 100%;
+}
