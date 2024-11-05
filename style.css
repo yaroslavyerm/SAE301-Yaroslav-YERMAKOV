@@ -180,3 +180,65 @@ p{
 .home_matchs{
     width: 100%;
 }
+
+footer{
+    background-color: var(--impossible--red);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.copyright{
+    font-size: 14px;
+}
+
+footer div{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 100%;
+}
+
+.nav_menu li{
+    list-style: none;
+}
+.nav_menu li a{
+    color: var(--mariana--trench);
+}
+
+.nav_menu1 div ul, .nav_menu2 div ul{
+    padding: 0px;
+}
+
+.nav_menu1{
+    font-weight: bold;
+}
+
+.nav_menu2{
+    font-size: 14px;
+    text-align: right;
+}
+
+.hero_button{
+    background-color: transparent;
+    border: none;
+    color: inherit;
+}
+
+.menu_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--mariana--trench);
+    z-index: 100;
+}
+
+.noscroll,
+.noscroll body {
+    overflow: hidden;
+}
