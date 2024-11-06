@@ -424,6 +424,93 @@ display: flex;
     text-decoration: line-through;
 }
 
+.signUp-buttons{
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+}
+
+.signUp-buttons a{
+    background-color: var(--impossible--red);
+    color: var(--mariana--trench);
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid var(--mariana--trench);
+    display: block;
+}
+.signUp{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    height: 50vh;
+}
+
+.sigup, .main{
+    padding: 30px;
+}
+
+/* General Wrapper */
+.login-wrap {
+    max-width: 400px;
+   
+    padding: 20px;
+    font-family: Din;
+}
+
+/* Form Labels */
+.form-label {
+    display: block;
+    color: var(--desert--storm);
+    margin-bottom: 5px;
+}
+
+/* Input Fields */
+.form-input,
+.form-checkbox {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--desert--storm);
+    box-sizing: border-box;
+    background-color: var(--desert--storm);
+    color: var(--mariana--trench)
+}
+
+.form-input:focus {
+    border-color: var(--impossible--red);
+}
+
+/* Checkbox */
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.form-checkbox {
+    width: auto;
+}
+
+/* Button */
+.form-button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--impossible--red);
+    border: none;
+    color: var(--desert--storm);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.page_wrap{
+    padding: 30px;
+}
+
 @media (min-width: 1024px) {
     .home_texts {
         display: grid;
@@ -463,5 +550,12 @@ footer div {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+}
 
-}}
+.cards_wrap{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+}

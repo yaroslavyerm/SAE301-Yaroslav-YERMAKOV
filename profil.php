@@ -96,11 +96,13 @@
     </div>
 <?php else : ?>
     <!-- Display sign-up buttons if not logged in -->
-    <div id="signUp">
+    <div class="signUp">
         <h1>Inscrivez-vous !</h1>
         <p>Vous ne vous êtes pas encore inscrit ?</p>
-        <a href="http://localhost/sae301/login">Log In</a>
-        <a href="http://localhost/sae301/register">Register</a>
+        <div class="signUp-buttons">
+            <a href="http://localhost/sae301/login">Log In</a>
+            <a href="http://localhost/sae301/register">Register</a>
+        </div>
     </div>
 <?php endif; ?>
 

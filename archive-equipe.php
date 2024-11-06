@@ -53,11 +53,14 @@
     <?php wp_reset_postdata(); ?>
 
     <div>
-    <p>Vous voulez faire une partie d’une équipe ?</p>
-    <a href="localhost/103/login">S’inscrire</a>
+ 
 </div>
 
 </div>
+   <div class="sigup">
+       <p>Vous voulez faire une partie d’une équipe ?</p>
+        <a href="localhost/103/login">S’inscrire</a>
+   </div>
 
 
 <?php get_footer(); ?>

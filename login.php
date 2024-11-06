@@ -38,7 +38,7 @@ get_header(); ?>
 </div>
 
 <div class="main">
-<h2>Connexion</h2>
+<h1>Connexion</h1>
     <div class="login-wrap">
     
         <?php if (!empty($login_errors)): ?>
