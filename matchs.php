@@ -45,25 +45,40 @@
     ));
 
     if ($match_query->have_posts()) : ?>
-        <?php while ($match_query->have_posts()) : $match_query->the_post(); ?>
-        <div class="card">
-            <!-- Link to the single match page -->
-            <a href="<?php the_permalink(); ?>" class="card-link">
-                <!-- Display the featured image -->
-                <?php if (has_post_thumbnail()) : ?>
-                    <div class="card-image">
-                        <?php the_post_thumbnail('large'); ?>
-                    </div>
-                <?php endif; ?>
+    <div class="container_games">
+    <?php while ($match_query->have_posts()) : $match_query->the_post(); ?>
+        <!-- Link to the single match page with updated class structure -->
+        <a href="<?php the_permalink(); ?>" class="match_card">
+            <!-- Display the featured image, if available -->
+            <?php if (has_post_thumbnail()) : ?>
+                <?php the_post_thumbnail('large'); ?>
+            <?php endif; ?>
 
-                <!-- Display the match title -->
-                <h3 class="card-title">
-                    <?php the_title(); ?>
-                </h3>
-            </a>
-        </div>
-        <?php endwhile; ?>
-    <?php endif; ?> <!-- Close the if statement -->
+            <!-- Updated match info section -->
+            <div class="match_info">
+                <!-- Match title -->
+                <h3 class="match_title"><?php the_title(); ?></h3>
+                
+                <!-- Additional match details -->
+                <div class="match_details">
+                    <p class="match_stage">
+                        <?php 
+                        $type_field = get_field_object('type_field'); 
+                        echo esc_html($type_field['label']); 
+                        ?>
+                    </p>
+                    <p class="match_datetime">
+                        <?php 
+                        $timestamp = new DateTime(get_field('match_datetime'));
+                        echo $timestamp->format('H:i'); ?> | <?php echo $timestamp->format('d.m'); 
+                        ?>
+                    </p>
+                </div>
+            </div>
+        </a>
+    <?php endwhile; ?>
+    <?php endif; ?>
+</div>
 
     <?php wp_reset_postdata(); ?> <!-- Reset the global $post object -->
 </div>
