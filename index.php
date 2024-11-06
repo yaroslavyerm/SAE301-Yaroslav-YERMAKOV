@@ -7,11 +7,13 @@ get_header();
         <div class="hero_wrap">
             <div class="hero_top">
                 <!-- logo -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M28.174 18.7798L19.8297 27.125L16.6037 23.899L25.4816 15.0164L30.8453 15L48 32.1547L47.9051 32.2505H41.6446L28.174 18.7798ZM19.826 29.8511L28.1703 21.5068L31.3963 24.7319L22.5184 33.6154L17.1547 33.6309L0 16.4762L0.0948834 16.3813H6.35536L19.826 29.8511Z" fill="#ECE8E0"/>
+                <a href="http://localhost/sae301/">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M28.174 18.7798L19.8297 27.125L16.6037 23.899L25.4816 15.0164L30.8453 15L48 32.1547L47.9051 32.2505H41.6446L28.174 18.7798ZM19.826 29.8511L28.1703 21.5068L31.3963 24.7319L22.5184 33.6154L17.1547 33.6309L0 16.4762L0.0948834 16.3813H6.35536L19.826 29.8511Z" fill="#ECE8E0"/>
                 </svg>
+                </a>
                 <!-- menu icon -->
-                <button class="hero_button" aria-controls="menu" @click="menuIsOpen = !menuIsOpen">
+                <button class="hero_button" aria-controls="menu" @click="menuIsOpen = true">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <path d="M4 9.33334H28" stroke="#ECE8E0" stroke-width="1.5" stroke-linecap="round"/>
                         <path d="M4 16H28" stroke="#ECE8E0" stroke-width="1.5" stroke-linecap="round"/>
@@ -40,18 +42,62 @@ get_header();
         <p>Avec des calendriers de matchs détaillés, des informations sur les équipes et des mises à jour en direct, <strong>ValoVerse</strong> vous plonge au cœur de l'action du début à la fin. Plongez dans les événements à venir, connectez-vous avec d'autres joueurs et venez célébrer <strong>Valorant</strong> à son plus haut niveau.</p>
     </section>
 
+<?php
+// Get current date and time in the format matching your ACF field
+$current_datetime = current_time('d/m/Y g:i a');
+
+// Set up WP_Query to retrieve upcoming matches
+$args = array(
+    'post_type'      => 'match',
+    'posts_per_page' => 2,
+    'meta_key'       => 'date',
+    'orderby'        => 'meta_value',
+    'order'          => 'ASC',
+    'meta_query'     => array(
+        array(
+            'key'     => 'date',
+            'value'   => $current_datetime,
+            'compare' => '>=',
+            'type'    => 'DATETIME'
+        )
+    )
+);
+
+$match_query = new WP_Query($args);
+
+if ($match_query->have_posts()) : ?>
     <section class="home_events">
         <h2>Événements à venir</h2>
         <div class="home_matchs">
-            <div class="home_matchs_1">
-                <!-- 2 cards -->
-            </div>
+            <?php while ($match_query->have_posts()) : $match_query->the_post(); 
+                $date_string = get_field('date');
+                if($date_string) {
+                    // Convert the date from d/m/Y g:i a format to timestamp
+                    $timestamp = DateTime::createFromFormat('d/m/Y g:i a', $date_string);
+                }
+            ?>
+                <div class="match_card">
+                    <h3><?php the_title(); ?></h3>
+                    <?php if($timestamp): ?>
+                        <p>Date: <?php echo $timestamp->format('d/m'); ?></p>
+                        <p>Time: <?php echo $timestamp->format('H:i'); ?></p>
+                    <?php endif; ?>
+                </div>
+            <?php endwhile; ?>
             <div class="home_matchs_2">
                 <!-- card -->
                 <a class="button" href="http://localhost/sae301/matchs">Tous les matchs</a>
             </div>
         </div>
     </section>
+<?php
+else :
+    echo '<p>No upcoming matches found.</p>';
+endif;
+
+// Reset post data
+wp_reset_postdata();
+?>
 </main>
 <?php
 get_footer();
