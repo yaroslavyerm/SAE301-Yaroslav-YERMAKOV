@@ -27,7 +27,7 @@
             // Get current user information
             $current_user = wp_get_current_user();
             ?>
-            <img src="<?php echo get_avatar_url($current_user->ID); ?>" alt="User Avatar">
+            <img src="<?php echo get_avatar_url($current_user->ID, array('size' => 512)); ?>" alt="User Avatar">
             <h1 class="username"><?php echo esc_html($current_user->display_name); ?></h1>
         </div>
         <p class="rank"><?php echo esc_html(get_user_meta($current_user->ID, 'rank', true)); ?></p>
@@ -83,13 +83,16 @@
                 <?php endwhile; ?>
             </div>
         <?php 
-        else : 
-            echo '<p>No team affiliations found.</p>';
+        
         endif;
 
         // Reset post data after custom query
         wp_reset_postdata();
         ?>
+
+        <p class="italic">Vous pouvez indiquer votre rank et changer votre avatar dans Tableau de Board</p>
+
+        <a href="http://localhost/sae301/wp-login.php?action=logout&_wpnonce=721f431fd6">Deconnexion</a>
     </div>
 <?php else : ?>
     <!-- Display sign-up buttons if not logged in -->
